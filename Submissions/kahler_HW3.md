@@ -2,6 +2,18 @@ Abigail Kahler
 Homework 3 Written Assignment
 Due 09/14/2020
 
+---------
+# Grade
+
+3/3 - Nice job. Its fine that you did a lot of this manually. The point of this week was to use the for loops and conditionally to help  you subset your data for making a prediction but its fine if you were still selecting ranges manually.
+
+Next time please make sure you number your question responses and  
+if possible repeat the question too.  
+
+Also no need to copy code into your md file you should put a copy of your final py file into this folder per the submission instructions. 
+
+---
+
 The variables flow, year, month, and day are all lists with length 11576.
 Flow is composed of floats because of the decimals values, while year, month, and day are integers.
 
@@ -9,7 +21,7 @@ The historical September daily flow was greater than each weekly prediction an a
 My predictions are under historical values 73% of the time.
 
 Before the year 2000, there are 138 occurrences above my prediction, showing them to be under 89% of the time.
-After 2010, the historical values are over my predictions 52 times, equivalent to 42% of the time. 
+After 2010, the historical values are over my predictions 52 times, equivalent to 42% of the time.
 The decrease in under predicting should represent a drying trend in the past ten years, however, my number of total overage occurrences does not seem right with the
 total possibilities within that time range. I will need to explore and check this by creating a better code that is not just manual math. Then I would like to plot my predictions
 against historical averages per the conditions above to visualize the results.
