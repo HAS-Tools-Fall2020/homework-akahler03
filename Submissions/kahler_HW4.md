@@ -8,11 +8,13 @@ Due 21 Sept. 2020
 This time I only looked at the five year, two year, and one year historical data to inform my forecasts, with emphasis on the one-year.
 For the two week forecasts, I looked at the data per week and created histograms and also calculated the flow quantiles. The distribution
 of flow values illustrated in the quantiles informed my selection of forecast values by showing the distribution of historic values. 
+
+
 [continue figuring out how to add histogram images in the morning]
 
 2) Describe the variable flow_data:
 What is it? 
-  It is an array with four columns [year, month, day, flow] 
+  It is a twp-dimensional array. 
 What type of values is is composed of? 
   It is composed of floats.
 What is are its dimensions, and total size? 
