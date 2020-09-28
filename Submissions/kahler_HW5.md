@@ -1,6 +1,10 @@
 **Abigail Kahler**\
 **Homework 5 ** \ 
-**Written Assignment**
+**Written Assignment** \
+\
+**Forecast Summary**\
+This time I focused on recent history with a week-by-week comparison of 2019. This showed that though there are some similarities in trend there is considerable decrease in value. This is refelcted in my one and two week forecast. The next step would be to revisit my work for the assignment questions and apply them specifically to the ranges that I plotted. In my extended forecast I also looked at annual trends while reflecting current conditions.\
+\
 
 **#1 Provide a summary of the data frames properties.What are the column names?**\
 agency_cd,	site_no,	datetime,	flow,	code,	year,	month	day\
