@@ -1,5 +1,5 @@
 **Abigail Kahler**\
-**Homework 5 **\ 
+**Homework 5 ** \ 
 **Written Assignment**
 
 **#1 Provide a summary of the data frames properties.What are the column names?**\
@@ -59,5 +59,18 @@ I am having trouble getting some of my work to output in table format. If I have
 1993-01-08 63400.0 \
 \
 **#5 Find the highest and lowest flow values for every month of the year (i.e. you will find 12 maxes and 12 mins) and report back what year these occurred in.**\
-
-
+**Highs        Lows**\
+1993    Jan    1989\
+1993    Feb   1991\
+1995    Mar   1989\
+1991    Apr   2018\
+1992    May   2004\
+1992    Jun   2012\
+2006    Jul   2012\
+1992    Aug   1989\
+2004    Sept  2020 \ 
+2010    Oct   2012\
+2004    Nov   2016\
+2004    Dec   2012\
+\
+**#6 Provide a list of historical dates with flows that are within 10% of your week 1 forecast value. If there are none than increase the %10 window until you have at least one other value and report the date and the new window you used**\
