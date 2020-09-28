@@ -78,3 +78,4 @@ I am having trouble getting some of my work to output in table format. If I have
 2004    Dec   2012\
 \
 **#6 Provide a list of historical dates with flows that are within 10% of your week 1 forecast value. If there are none than increase the %10 window until you have at least one other value and report the date and the new window you used**\
+There are 535 occurrences of the historical data being within 10% of my week1 forecast.
