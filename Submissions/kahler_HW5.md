@@ -1,7 +1,10 @@
 **Abigail Kahler**\
-**Homework 5 ** \ 
-**Written Assignment** \
+**Homework 5** \
+**Written Assignment**\
 \
+### Grades
+3/3 - great job even with all the python issues. Note that in your md file some of your '\' are not working as you think. I think it might be the spaces?
+
 **Forecast Summary**\
 This time I focused on recent history with a week-by-week comparison of 2019. This showed that though there are some similarities in trend there is considerable decrease in value. This is refelcted in my one and two week forecast. The next step would be to revisit my work for the assignment questions and apply them specifically to the ranges that I plotted. In my extended forecast I also looked at annual trends while reflecting current conditions.\
 \
@@ -72,7 +75,7 @@ I am having trouble getting some of my work to output in table format. If I have
 1992    Jun   2012\
 2006    Jul   2012\
 1992    Aug   1989\
-2004    Sept  2020 \ 
+2004    Sept  2020 \
 2010    Oct   2012\
 2004    Nov   2016\
 2004    Dec   2012\
