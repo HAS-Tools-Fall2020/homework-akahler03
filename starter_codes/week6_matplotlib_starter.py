@@ -14,8 +14,13 @@ import datetime
 # %%
 # ** MODIFY **
 # Set the file name and path to where you have stored the data
+<<<<<<< Updated upstream
 filename = 'streamflow_week6.txt'
 filepath = os.path.join('homework-akahler03\data', filename)
+=======
+filename = 'streamflow_week1.txt'
+filepath = os.path.join('data', filename)
+>>>>>>> Stashed changes
 print(os.getcwd())
 print(filepath)
 
@@ -49,17 +54,23 @@ flow_weekly = data.resample("W", on='datetime').mean()
 flow_weekly['flow_tm1'] = flow_weekly['flow'].shift(1)
 flow_weekly['flow_tm2'] = flow_weekly['flow'].shift(2)
 
+<<<<<<< Updated upstream
 #%%
 
+=======
+>>>>>>> Stashed changes
 # Step 2 - pick what portion of the time series you want to use as training data
 # here I'm grabbing the first 800 weeks 
 # Note1 - dropping the first two weeks since they wont have lagged data
 # to go with them  
 train = flow_weekly[2:800][['flow', 'flow_tm1', 'flow_tm2']]
 test = flow_weekly[800:][['flow', 'flow_tm1', 'flow_tm2']]
+<<<<<<< Updated upstream
 train
 
 #%%
+=======
+>>>>>>> Stashed changes
 
 # Step 3: Fit a linear regression model using sklearn 
 model = LinearRegression()
