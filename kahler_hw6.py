@@ -15,7 +15,7 @@ import datetime
 # ** MODIFY **
 # Set the file name and path to where you have stored the data
 filename = 'streamflow_week6.txt'
-filepath = os.path.join('homework-akahler03\data', filename)
+filepath = os.path.join('data', filename)
 print(os.getcwd())
 print(filepath)
 
@@ -81,7 +81,7 @@ q_pred_train = model.predict(train['flow_tm1'].values.reshape(-1,1))
 q_pred_test = model.predict(test['flow_tm1'].values.reshape(-1,1))
 
 #%%
-flow_weekly.tail(5)
+flow_weekly['2019-10-01':'2019-10-31']
 
 # you could also predict the q for just a single value like this
 last_week_flow = 56
