@@ -1,7 +1,11 @@
 
 **Abigail Kahler**\
 **Homework Week 6**\
-test change
+
+___
+### Grade
+3/3 - Nice job, glad your repo is okay :) 
+___
 \
 \
 **1. What you are using as your prediction variables**\
