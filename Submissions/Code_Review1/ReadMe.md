@@ -10,10 +10,10 @@ The flow comparison is followed by two line graphs that I use to help inform\
 how I will shift my AR model forecast to be more realistic. I have chosen to\
 focus my calculations on recent years and only Septembers and Octobers.\
 \
-**Week One Forecast (cell 140):**\
+**REAL Week One Forecast (cell 140):**\
 \
 \
-**Week Two Forecast (cell 143):**\
+**REAL Week Two Forecast (cell 143):**\
 \
 \
 **Autoregressive model week one forecast (cell 128):**\
