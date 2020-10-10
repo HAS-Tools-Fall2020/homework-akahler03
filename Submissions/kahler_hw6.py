@@ -13,7 +13,7 @@ import datetime
 
 # %%
 # ** MODIFY **
-# Set the file name and path to where you have stored the data
+#Set the file name and path to where you have stored the data
 filename = 'streamflow_week6.txt'
 filepath = os.path.join('homework-akahler03\data', filename)
 print(os.getcwd())
