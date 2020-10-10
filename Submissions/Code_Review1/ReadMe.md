@@ -1,5 +1,5 @@
-# Abigail Kahler#
-# Week 7 Instructions for running forecast#
+# Abigail Kahler
+# Week 7 Instructions for running forecast
 \
 I have included directional comments in each cell to explain its purpose and\
 to instruct if it requires input. My new function starts in cell 48 and is\
@@ -21,7 +21,7 @@ focus my calculations on recent years and only Septembers and Octobers.\
 \
 **Autoregressive model week two forecast (cell 134):**
 
-# Written Review: Questions to consider#
+# Written Review: Questions to consider
 \
 **Is the script easy to read and understand?**\
 \
@@ -53,4 +53,3 @@ focus my calculations on recent years and only Septembers and Octobers.\
 **Style:**\
 \
 **Code Awesome:**\
-\
