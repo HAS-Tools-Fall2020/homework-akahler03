@@ -52,4 +52,4 @@ focus my calculations on recent years and only Septembers and Octobers.\
 \
 **Style:**\
 \
-**Code Awesome:**\
+**Code Awesome:**
