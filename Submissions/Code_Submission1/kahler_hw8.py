@@ -11,10 +11,7 @@ import datetime
 
 # Set the file name and path to where you have stored the data
 filename = 'streamflow_week8.txt'
-filepath = os.path.join('homework-akahler03\data', filename)
-#filepath = os.path.join('..\..\data', filename)
-
-# do ../ to get up to correct directory
+filepath = os.path.join('..\..\data', filename)
 print(os.getcwd())
 print(filepath)
 
