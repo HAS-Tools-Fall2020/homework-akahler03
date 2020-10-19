@@ -3,7 +3,8 @@
 \
 **1.A brief summary of the AR model you built and why. Use whatever graphs you find helpful:**
 
-This week I built an autoregressive model based on flow values from January 2017 through January 2019. This date range gave a coefficient of determination value of .67 which was much higher than when I explored other date ranges or additional time steps.  
+This week I built an autoregressive model based on flow values from January 2017 through January 2019. This date range gave a coefficient of determination value of .67 which was much higher than when I explored other date ranges or additional time steps. I also plotted October values for the entire date range to look at patterns and further inform my 16 week forecast guestimate.  
+![](../assets/ReadMe-f7cfdd90.png)
 
 
 **2.An explanation of how you generated your forecasts and why (i.e. did you use your AR model or not?)**\
@@ -15,4 +16,4 @@ The peer evaluation was a good opportunity to check in with a classmate and comp
 \
 **Describe the part of your script that you are most proud of and why.**\
 \
-I am not proud of this script, but I am encouraged that I can now visualize where I want it to be and the next few steps for how to get it there.
+I am encouraged that I have solidified a structure for the 16 week forecast and can visualize next few steps for how to where I want it to be.
