@@ -4,7 +4,7 @@
 **1.A brief summary of the AR model you built and why. Use whatever graphs you find helpful:**
 
 This week I built an autoregressive model based on flow values from January 2017 through January 2019. This date range gave a coefficient of determination value of .67 which was much higher than when I explored other date ranges or additional time steps. I also plotted October values for the entire date range to look at patterns and further inform my 16 week forecast guestimate.  
-![](../assets/ReadMe-f7cfdd90.png)
+![](assets/ReadMe-f7cfdd90.png)
 
 
 **2.An explanation of how you generated your forecasts and why (i.e. did you use your AR model or not?)**\
