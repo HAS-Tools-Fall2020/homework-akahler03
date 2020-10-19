@@ -10,8 +10,10 @@ from sklearn.linear_model import LinearRegression
 import datetime
 
 # Set the file name and path to where you have stored the data
-filename = 'streamflow_week7.txt'
-filepath = os.path.join('homework-akahler03\data', filename)
+filename = 'streamflow_week8.txt'
+#filepath = os.path.join('homework-akahler03\data', filename)
+filepath = os.path.join('..\..\data', filename)
+
 # do ../ to get up to correct directory
 print(os.getcwd())
 print(filepath)
@@ -53,7 +55,9 @@ def flow_comparison(current, previous):
         plots.
         """
     comp = (((current - previous)/previous) * 100).round(2)
-    return print('change of', comp, 'percent')
+    print('change of', comp, 'percent')
+    return comp
+
 
 # %%
 #Office hours, ask about loop? 
@@ -68,7 +72,8 @@ oct_2020 = flow_weekly[(flow_weekly.year == 2020) & (flow_weekly.month == 9) & (
 week1 = flow_comparison(oct_2020.flow[0], oct_2019.flow[0])
 week2 = flow_comparison(oct_2020.flow[1], oct_2019.flow[1])
 week3 = flow_comparison(oct_2020.flow[2], oct_2019.flow[2])
-
+week1
+type(week1)
 # %%
 # A plot to represent Octobers of entire date range
 all_octobers = flow_weekly[flow_weekly.month == 10]
@@ -81,7 +86,7 @@ fig.show()
 
 # %%
 # Jan 2017 through Jan 2019 for training, based on the relevance
-# of recent history and the coefficient of determination.
+# of recent history and the coefficient of determination produced
 train = flow_weekly['2017-01-01':'2019-01-01']
 [['flow', 'flow_tm1', 'flow_tm2']]
 test = flow_weekly['2019-01-01':'2020-10-03'][['flow', 'flow_tm1', 'flow_tm2']]
@@ -136,10 +141,46 @@ decrease_by = .37
 
 # Each months starts with the same date value of previous year input into the
 # prediction equation and reduced by the informed value decrease_by
-start_aug16 = flow_weekly.loc['2019-08-15':'2019-08-22'].flow.values
+start_aug16 = flow_weekly.loc['2019-08-15':'2019-08-15'].flow.values
 one_16 = (model.intercept_ + model.coef_ * start_aug16*decrease_by).round(2)
 two_16 = (model.intercept_ + model.coef_ * one_16*decrease_by).round(2)
 
+start_aug16
+# %%
+# This one works without loop
+
+start = ["2019-08-01", '2019-09-01', '2019-09-07']
+stop = ["2019-08-21", '2019-09-01', '2019-09-07']
+i = 0
+start_temp = flow_weekly.loc[start[i]:stop[i]].flow.values
+one_temp = (model.intercept_ + model.coef_ * start_temp*decrease_by).round(2)
+two_temp = (model.intercept_ + model.coef_ * one_temp*decrease_by).round(2)
+print(one_temp, two_temp)
+
+# %%
+# Errors
+start = ["2019-08-01", '2019-08-08', '2019-08-15']
+stop = ["2019-08-08", '2019-08-15', '2019-09-22']
+for i in start:
+    start_temp = flow_weekly.loc[start[i]:stop[i]].flow.values
+    one_temp = (model.intercept_ + model.coef_ * start_temp*decrease_by).round(2)
+    two_temp = (model.intercept_ + model.coef_ * one_temp*decrease_by).round(2)
+print(one_temp, two_temp)
+
+
+
+
+# %%
+# Create dataframe to hold date range for each week
+week_num = ('wk1','wk2')
+week_date = pd.DataFrame([['2019-08-15','2019-08-15']])
+week_date.index = week_num
+week_date.columns = ('start','stop')
+# Create a loop to calculate each section of weeks
+
+
+
+# %%
 start_sept16 = flow_weekly.loc['2019-09-01':'2019-09-07'].flow.values
 three_16 = (model.intercept_ + model.coef_ * start_sept16*decrease_by).round(2)
 four_16 = (model.intercept_ + model.coef_ * three_16*decrease_by).round(2)
