@@ -16,4 +16,4 @@ The peer evaluation was a good opportunity to check in with a classmate and comp
 \
 **Describe the part of your script that you are most proud of and why.**\
 \
-I am encouraged that I have solidified a structure for the 16 week forecast and can visualize next few steps to get it to where I want it to be.
+I am encouraged that I have solidified a structure for the 16 week forecast and can visualize the next few steps to get it to where I want it to be.
