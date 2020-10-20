@@ -1,6 +1,17 @@
 # Abigail Kahler
 # Week 8 Forecast Summary
 \
+
+#### Grade 
+ - 6/6  Great  job!
+ - Readability: 2
+ - Style: 3 
+ - Code: 2
+
+ - I like all of the print statments in the code and all of the things its doing!
+ - THe comments could be a little more descriptive it got a little hard to follow at the end
+ - Also keeep working on getting things into loops and functions :) 
+
 **1.A brief summary of the AR model you built and why. Use whatever graphs you find helpful:**
 
 This week I built an autoregressive model based on flow values from January 2017 through January 2019. This date range gave a coefficient of determination value of .67 which was much higher than when I explored other date ranges or additional time steps. I also plotted October values for the entire date range to look at patterns and further inform my 16 week forecast guestimate.  

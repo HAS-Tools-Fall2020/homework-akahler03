@@ -11,7 +11,7 @@ import datetime
 
 # Set the file name and path to where you have stored the data
 filename = 'streamflow_week8.txt'
-filepath = os.path.join('..\..\data', filename)
+filepath = os.path.join('../../data', filename)
 print(os.getcwd())
 print(filepath)
 
@@ -63,9 +63,15 @@ oct_2020 = flow_weekly[(flow_weekly.year == 2020) & (flow_weekly.month == 9) & (
 
 # Utilizing the new function to inform the percent decrease chosen for my
 # forecast calculations
+
 week1 = flow_comparison(oct_2020.flow[0], oct_2019.flow[0])
 week2 = flow_comparison(oct_2020.flow[1], oct_2019.flow[1])
 week3 = flow_comparison(oct_2020.flow[2], oct_2019.flow[2])
+
+# LC could put this in a loop like this:
+weeks = np.zeros(3)
+for i in range(3):   
+       weeks[i] = flow_comparison(oct_2020.flow[i], oct_2019.flow[i])
 
 # %%
 # A plot to represent Octobers of entire date range
@@ -80,8 +86,9 @@ fig.show()
 # %%
 # Jan 2017 through Jan 2019 for training, based on the relevance
 # of recent history and the coefficient of determination produced
-train = flow_weekly['2017-01-01':'2019-01-01']
-[['flow', 'flow_tm1', 'flow_tm2']]
+
+train = flow_weekly['2017-01-01':'2019-01-01'] 
+       [['flow', 'flow_tm1', 'flow_tm2']]
 test = flow_weekly['2019-01-01':'2020-10-03'][['flow', 'flow_tm1', 'flow_tm2']]
 
 # %%
@@ -150,6 +157,8 @@ print(one_temp, two_temp)
 
 
 # %%
+# LC - I'm getting a little confused down here but I think this is the part 
+# you were struggling with 
 start_sept16 = flow_weekly.loc['2019-09-01':'2019-09-07'].flow.values
 three_16 = (model.intercept_ + model.coef_ * start_sept16*decrease_by).round(2)
 four_16 = (model.intercept_ + model.coef_ * three_16*decrease_by).round(2)
