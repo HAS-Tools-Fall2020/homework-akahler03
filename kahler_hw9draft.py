@@ -12,20 +12,7 @@ import json
 import urllib.request as req
 import urllib
 
-# Set the file name and path to where you have stored the data
-filename = 'streamflow_week8.txt'
-filepath = os.path.join('homework-akahler03\data', filename)
-print(os.getcwd())
-print(filepath)
-
-
 # %%
-# Read the data into a pandas dataframe
-data = pd.read_table(filepath, sep='\t', skiprows=30,
-                     names=['agency_cd', 'site_no', 'datetime',
-                            'flow', 'code'],
-                     parse_dates=['datetime']
-                     )
 
 # Expand the dates to year month day
 data['year'] = pd.DatetimeIndex(data['datetime']).year
