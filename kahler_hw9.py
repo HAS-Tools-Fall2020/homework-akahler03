@@ -11,6 +11,10 @@ import datetime
 import json 
 import urllib.request as req
 import urllib
+import matplotlib.dates as mdates
+from matplotlib.dates import DateFormatter
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
 
 # %%
 # This is the full url for the first dataset: USGS streamflow for Verde River
@@ -21,6 +25,8 @@ url = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=0950600
 site = '09506000'
 start = '1990-01-01'
 end = '2020-10-16'
+
+# Using variables is more streamlined for changing station or date ranges
 url = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=" + site + \
       "&referred_module=sw&period=&begin_date=" + start + "&end_date=" + end
 data = pd.read_table(url, skiprows=30, names=['agency_cd', 'site_no',
@@ -40,11 +46,12 @@ flow_weekly = data.resample("W", on='datetime').mean()
 # %%
 # This is the second dataset: using json API to access temperature data
 mytoken = '1e85cbb5763f4db39d33ab9ca6cb55a9'
-url = "https://api.synopticdata.com/v2/stations/timeseries?&token=\
-        1e85cbb5763f4db39d33ab9ca6cb55a9&start=202010171201&end=202010251201&timeformat=\
-        %Y%m%d&obtimezone=local&units=english&output=json&country=us&state=AZ&county=Yavapai"
+#url = "https://api.synopticdata.com/v2/stations/timeseries?&token=\
+ #       1e85cbb5763f4db39d33ab9ca6cb55a9&start=202010171201&end=202010251201&timeformat=\
+  #      %Y%m%d&obtimezone=local&units=english&output=json&country=us&state=AZ&county=Yavapai"
 base_url = "https://api.synopticdata.com/v2/stations/timeseries"
-# This is a dictionary. Watch for the curly brackets.
+
+# This is a dictionary of variables that will be used to recreate the url.
 args = {
     'start': '201810010000', 
     'end': '202010240000',
@@ -54,13 +61,12 @@ args = {
     'units': 'temp|F,precip|mm',
     'token': mytoken} 
 # %%
+# This generates the revised url with variables
 apiString = urllib.parse.urlencode(args)
-print(apiString)
 fullUrl = base_url + '?' + apiString
-print(fullUrl)
 
 # %%
-# This creates a dictionary 
+# This creates a dictionary from the API formatting
 response = req.urlopen(fullUrl)
 responseDict = json.loads(response.read())
 
@@ -89,15 +95,51 @@ dateTime = responseDict['STATION'][0]['OBSERVATIONS']['date_time']
 airT = responseDict['STATION'][0]['OBSERVATIONS']['air_temp_set_1']
 
 # Combine this into a pandas dataframe
-data = pd.DataFrame({'Temperature': airT}, index=pd.to_datetime(dateTime))
+data2 = pd.DataFrame({'Temperature': airT}, index=pd.to_datetime(dateTime))
 
 # Now convert this to daily data using resample
-data_daily = data.resample('D').mean()
+data2_daily = data2.resample('D').mean()
 # Convert to weekly values
-data_weekly = data.resample('W').mean()
+data2_weekly = data2.resample('W').mean()
 
 # %%
-data_weekly.loc['2018-10-07']
+flow_weekly.flow['2019-10-24':'2020-10-24']
+
+# %%
+# A one year plot of weekly temperature values
+fig, ax = plt.subplots()
+ax.plot(data2_weekly.loc['2019-10-24':'2020-10-24'])
+#ax.plot(flow_weekly.flow['2019-10-24':'2020-10-24'])
+ax.set(title = 'Weekly Air Temp. Oct. 2019-2020', xlabel = 'Date',
+       ylabel = 'degrees (F)')
+ax.legend()
+fig.show()
+
+# %%
+# Plotting weekly flow and weekly temp with shared x axis
+
+ax1 = plt.subplot(311)
+plt.plot(flow_weekly.flow['2019-10-24':'2020-10-24'])
+plt.setp(ax1.get_xticklabels())
+ax1.set(title = 'Weekly Flow Oct. 2019-2020', ylabel = 'Flow (cfs)')
+ax2 = plt.subplot(313, sharex=ax1)
+plt.plot(data2_weekly.loc['2019-10-24':'2020-10-24'],color='red')
+ax2.set(title = 'Weekly Temp. Oct. 2019-2020', ylabel = 'Degrees (F)')
+ax.legend()
+fig.show()
+
+# %%
+# A two month plot of aggregated streamflow and temp
+fig, ax = plt.subplots()
+ax.plot(data2_weekly.loc['2020-09-01':'2020-10-24'], label = 'temp')
+ax.plot(flow_weekly.flow['2020-09-01':'2020-10-24'], label = 'flow')
+ax.set(title = 'Weekly Air Temp. and Flow Sept-Oct 2020', xlabel = 'Date',
+       ylabel = 'degrees (F)')
+date_form = DateFormatter("%m-%d")
+ax.xaxis.set_major_formatter(date_form)
+ax.legend()
+fig.show()
+
 
 
 # %%
@@ -133,16 +175,6 @@ oct_2020 = flow_weekly[(flow_weekly.year == 2020) & (flow_weekly.month == 9) & (
 week1 = flow_comparison(oct_2020.flow[0], oct_2019.flow[0])
 week2 = flow_comparison(oct_2020.flow[1], oct_2019.flow[1])
 week3 = flow_comparison(oct_2020.flow[2], oct_2019.flow[2])
-
-# %%
-# A plot to represent Octobers of entire date range
-all_octobers = flow_weekly[flow_weekly.month == 10]
-fig, ax = plt.subplots()
-ax.plot(all_octobers.year, all_octobers.flow)
-ax.set(title="All years October flow", xlabel='Date',
-       ylabel="Weekly Avg Flow [cfs]")
-ax.legend()
-fig.show()
 
 # %%
 # Jan 2017 through Jan 2019 for training, based on the relevance
