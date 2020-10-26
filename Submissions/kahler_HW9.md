@@ -25,4 +25,4 @@ I was looking for.
 \
 ![](assets/kahler_HW9-bcfb1cc9.png)\
 \
-![](assets/kahler_HW9-e0bb0035.png)
+![](assets/kahler_HW9-ba45dedc.png)
