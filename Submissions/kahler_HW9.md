@@ -1,5 +1,11 @@
 # Abigail Kahler
 # Week 9 Homework
+
+___
+## Grade
+3/3 - Nice work, sorry office hours were busy this morning and I didn't get to talk with you. Can you come back on  Thursday? 
+__
+
 **1. A brief summary of the how you chose to generate your forecast this week.**\
 \
 I used my updated framework from last week to generate the new forecast, since I have not incorporated the new dataset into it yet.\
