@@ -51,6 +51,9 @@ data = pd.read_table(url, skiprows=30, names=['agency_cd', 'site_no',
 
 # %%
 # Expand the dates to year month day
+
+# Specifically reading from csv
+
 data['year'] = pd.DatetimeIndex(data['datetime']).year
 data['month'] = pd.DatetimeIndex(data['datetime']).month
 data['day'] = pd.DatetimeIndex(data['datetime']).dayofweek
@@ -88,6 +91,7 @@ responseDict = json.loads(response.read())
 
 
 # %%
+
 # We can get to the data we want like this: 
 dateTime = responseDict['STATION'][0]['OBSERVATIONS']['date_time']
 

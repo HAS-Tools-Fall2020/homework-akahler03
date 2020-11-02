@@ -33,6 +33,21 @@ def flow_comparison(current, previous):
     return comp
 
 # %%
+# Creating a function to use the model line equation to predict one week values
+def week_predict(start_val, percent_change):
+    """This function will return a one-week forecast value using the
+       coefficient of determination and model intercept with the user inputs.
+       
+       start_val - array
+       percent_change - float
+       
+       It returns a single numpy array forecast value for an individual week.
+       """
+    one_week = ((model.intercept_ + model.coef_* start_val * percent_change)-2).round(2)
+    print('forecast value', one_week)
+    return one_week
+
+# %%
 # This is the full url for the first dataset: USGS streamflow for Verde River
 url = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=09506000" \
       "&referred_module=sw&period=&begin_date=1989-01-01&end_date=2020-10-19"
@@ -40,7 +55,7 @@ url = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=0950600
 # These are the desired values that can be replaced with variables 
 site = '09506000'
 start = '1990-01-01'
-end = '2020-10-16'
+end = '2020-08-24'
 
 # Using variables is more streamlined for changing station or date ranges
 url = "https://waterdata.usgs.gov/nwis/dv?cb_00060=on&format=rdb&site_no=" + site + \
@@ -70,7 +85,7 @@ base_url = "https://api.synopticdata.com/v2/stations/timeseries"
 # This is a dictionary of variables that will be used to recreate the url.
 args = {
     'start': '201810010000', 
-    'end': '202010240000',
+    'end': '202008240000',
     'obtimezone': 'UTC',
     'vars': 'air_temp',
     'stids': 'QVDA3',
@@ -85,7 +100,6 @@ fullUrl = base_url + '?' + apiString
 # This accesses the API formatting
 response = req.urlopen(fullUrl)
 responseDict = json.loads(response.read())
-
 
 # %%
 # We can get to the data we want like this: 
@@ -161,7 +175,7 @@ for i in range(3):
 # of recent history and the coefficient of determination produced
 train = flow_weekly['2017-01-01':'2019-01-01']
 [['flow', 'flow_tm1', 'flow_tm2']]
-test = flow_weekly['2019-01-01':'2020-10-03'][['flow', 'flow_tm1', 'flow_tm2']]
+test = flow_weekly['2019-01-01':'2020-08-24'][['flow', 'flow_tm1', 'flow_tm2']]
 
 # %%
 # Fitting a linear regression model using sklearn
@@ -182,6 +196,46 @@ q_pred_train = model.predict(train['flow_tm1'].values.reshape(-1, 1))
 q_pred_test = model.predict(test['flow_tm1'].values.reshape(-1, 1))
 
 # %%
+# Plotting training and observed flow from training start date
+fig, ax = plt.subplots()
+ax.plot(flow_weekly['flow'], color='green', label='full date range')
+ax.plot(train['flow'], '2', color='red', label='training period')
+ax.set(title="Observed Flow", xlabel='Date',
+       ylabel="Weekly Avg Flow [cfs]",
+       yscale='log', xlim=[datetime.date(2017, 1, 1),
+                           datetime.date(2020, 10, 3)])
+ax.legend()
+
+# %%
+# Line  plot comparison of predicted and observed flows
+fig, ax = plt.subplots()
+ax.plot(train['flow'], color='gray', linewidth=2, label='observed')
+ax.plot(train.index, q_pred_train, color='blue', linestyle='--',
+        label='simulated')
+ax.set(title="Observed Flow", xlabel="Date", ylabel="Weekly Avg Flow [cfs]",
+       yscale='log')
+ax.legend()
+
+# %%
+# Scatter plot of t vs t-1 flow with normal axes
+fig, ax = plt.subplots()
+ax.scatter(train['flow_tm1'], train['flow'], marker='p',
+           color='blueviolet', label='observations')
+ax.set(xlabel='flow t-1', ylabel='flow t')
+ax.plot(np.sort(train['flow_tm1']), np.sort(q_pred_train), label='AR model')
+ax.legend()
+
+plt.show()
+
+# %%
+
+
+
+
+
+
+
+
 # Using the most recent shifted flow value as a starting point for 
 # autoregressive one and two week forecast values
 start_val = flow_weekly.flow_tm1.tail(1)
@@ -197,6 +251,25 @@ decrease_by = .50
 one_week = ((model.intercept_ + model.coef_ * start_val*decrease_by)-2).round(2).values
 two_week = ((model.intercept_ + model.coef_ * one_week*decrease_by)-2).round(2)
 print('One week official forecast:', one_week,'Two week official forecast:', two_week)
+
+# %%
+week_predict(start_val, percent_change)
+
+
+# MAKE A LOOP FOR THE CELL ABOVE, TWO WEEK FORECAST
+two_week = np.zeros(2)
+aug = 2
+for i in range(aug):
+    two_week[i] = 
+
+
+weeks = np.zeros(3)
+for i in range(3):   
+    weeks[i] = flow_comparison(oct_2020.flow[i], oct_2019.flow[i])
+
+
+
+
 # %%
 # Sixteen week forecast calculations
 # Utilize function to evaluate percent decrease 
@@ -269,34 +342,3 @@ print('one:', one_16, 'two:', two_16, 'three:', three_16, 'four:', four_16,
       twelve_16, 'thirteen:', thirteen_16, 'fourteen:', fourteen_16, 'fifteen:',
       fifteen_16, 'sixteen:', sixteen_16)
 
-# %%
-# Plotting training and observed flow from training start date
-fig, ax = plt.subplots()
-ax.plot(flow_weekly['flow'], color='green', label='full date range')
-ax.plot(train['flow'], '2', color='red', label='training period')
-ax.set(title="Observed Flow", xlabel='Date',
-       ylabel="Weekly Avg Flow [cfs]",
-       yscale='log', xlim=[datetime.date(2017, 1, 1),
-                           datetime.date(2020, 10, 3)])
-ax.legend()
-
-# %%
-# Line  plot comparison of predicted and observed flows
-fig, ax = plt.subplots()
-ax.plot(train['flow'], color='gray', linewidth=2, label='observed')
-ax.plot(train.index, q_pred_train, color='blue', linestyle='--',
-        label='simulated')
-ax.set(title="Observed Flow", xlabel="Date", ylabel="Weekly Avg Flow [cfs]",
-       yscale='log')
-ax.legend()
-
-# %%
-# Scatter plot of t vs t-1 flow with normal axes
-fig, ax = plt.subplots()
-ax.scatter(train['flow_tm1'], train['flow'], marker='p',
-           color='blueviolet', label='observations')
-ax.set(xlabel='flow t-1', ylabel='flow t')
-ax.plot(np.sort(train['flow_tm1']), np.sort(q_pred_train), label='AR model')
-ax.legend()
-
-plt.show()
