@@ -14,7 +14,7 @@ filepath = os.path.join('data', filename)
 print(os.getcwd())
 print(filepath)
 
-filepath = '../Assignments/Solutions/data/streamflow_week1.txt'
+filepath = 'data/streamflow_week1.txt'
 
 # %%
 #Read the data into a pandas dataframe
