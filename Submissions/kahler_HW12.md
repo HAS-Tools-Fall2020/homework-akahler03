@@ -15,7 +15,7 @@ having trouble indexing to identify a new starting flow value for each month.
 * I chose NCEP reanalysis historical data for daily averaged air\
 temperature because this source seemed more intuitive. I think precip\
 would be more relevant to the model but wanted to explore other types\
-than what we covered in class.\
+than what we covered in class.
 * I used the suggested spatial bounds, 34N to 36N and 247E to 249E, and\
 chose a temporal resolution corresponding to what I've found most useful\
 with streamflow data: January 2019 through our current Saturday cutoff.
@@ -41,3 +41,4 @@ reinstalled all these programs on my laptop, to no avail, and will hopefully\
 do a factory reset next weekend.
 
 ![](plot_week12.jpg)
+![](plot_week12.png)
