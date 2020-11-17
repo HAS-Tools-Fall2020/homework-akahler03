@@ -1,6 +1,9 @@
 # Abigail Kahler
 ## Week 12 Written Assignment
 
+### Grade
+3/3 - Great work! I'm really happy to hear that your computer setup is better this week. Working on loops is a great use of time and I'm glad you are focusing on that. It will definitely serve you well in the future :) 
+
 ### Forecast summary
 This week I incorporated elements of the previous week's group forecast\
 such as reading the streamflow data in log form. I am still amending\
