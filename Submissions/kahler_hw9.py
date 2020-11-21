@@ -164,8 +164,8 @@ for i in range(3):
 # Jan 2017 through Jan 2019 for training, based on the relevance
 # of recent history and the coefficient of determination produced
 train = flow_weekly['2017-01-01':'2019-01-01']
-[['flow', 'flow_tm1', 'flow_tm2']]
-test = flow_weekly['2019-01-01':'2020-10-03'][['flow', 'flow_tm1', 'flow_tm2']]
+[['flow', 'flow_tm1']]
+test = flow_weekly['2019-01-01':'2020-10-03'][['flow', 'flow_tm1']]
 
 # %%
 # Fitting a linear regression model using sklearn
