@@ -9,7 +9,7 @@ from shapely.geometry import Point
 import contextily as ctx
 
 # %%
-#  Gauges II USGS stream gauge dataset website:
+# Gauges II USGS stream gauge dataset website:
 # https://water.usgs.gov/GIS/metadata/usgswrd/XML/
 # gagesII_Sept2011.xml#stdorder
 
