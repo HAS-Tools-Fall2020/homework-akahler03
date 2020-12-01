@@ -1,6 +1,10 @@
 # Abigail Kahler
 ## Homework 14 - FAIR research
 
+## Grade
+3/3 - nice work.
+
+
 #### Paper title:
 A model-independent iterative ensemble smoother for efficient history-matching\
 and uncertainty quantification in very high dimensions
