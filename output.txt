@@ -1,0 +1,37 @@
+coefficient of determination: 0.87
+one week
+forecast value [184.33]
+two week
+forecast value [226.7]
+week 1
+forecast value [179.]
+week 2
+forecast value [174.3]
+week 3
+forecast value [170.15]
+week 4
+forecast value [166.48]
+week 5
+forecast value [170.97]
+week 6
+forecast value [175.17]
+week 7
+forecast value [179.11]
+week 8
+forecast value [182.8]
+week 9
+forecast value [204.66]
+week 10
+forecast value [227.41]
+week 11
+forecast value [250.92]
+week 12
+forecast value [275.03]
+week 13
+forecast value [284.76]
+week 14
+forecast value [294.04]
+week 15
+forecast value [302.89]
+week 16
+forecast value [311.31]
