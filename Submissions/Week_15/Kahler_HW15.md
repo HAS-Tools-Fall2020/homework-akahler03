@@ -1,6 +1,9 @@
 ### Abigail Kahler
 #### Homework 15
 
+###
+3/3- Nice work! Glad you had some success. Also really interesting questions I hope we have time to discuss in class tomorrow.
+
 **1. Ocelote**\
 The resources I requested through the job builder were 1 node, 1 core\
 standard queue for 5 minutes. The wait was nearly instantaneous and it ran for 6\
